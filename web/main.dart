@@ -37,10 +37,10 @@ void isolateTest(){
     }
   });
 
-  Isolate.spawn(test,sPort.sendPort);
+  Isolate.spawn(testWorker,sPort.sendPort);
 }
 
-void test(sender) {
+void testWorker(sender) {
   var rPort = new ReceivePort();
   sender.send(rPort.sendPort);
 

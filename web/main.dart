@@ -1,36 +1,18 @@
-// Copyright (c) 2015, <your name>. All rights reserved. Use of this source code
-// is governed by a BSD-style license that can be found in the LICENSE file.
+library maintenance;
 
 import 'dart:html';
 import 'package:firebase/firebase.dart';
 import "dart:isolate";
 
-String firebaseURL = "https://swurdle.firebaseio.com";
-Firebase firebase;
+part 'data.dart';
+
 
 void main() {
 
-  firebase = new Firebase(firebaseURL);
-
-  loadGames();
+ Data data = new Data();
 
 }
 
-loadGames()async {
-
-  await firebase
-      .child('games')
-      .onChildAdded
-      .listen((e) async {
-
-    Map array = e.snapshot.val();
-
-    if (array['players'] == null || array['players'] == 0) {
-      print('deleting ${array['game_id']}');
-      await firebase.child('games/${array['game_id']}').remove();
-    }
-  });
-}
 
 
 log(String string){

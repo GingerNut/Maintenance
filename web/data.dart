@@ -13,8 +13,10 @@ class Data {
   Data() {
     firebase = new Firebase(firebaseURL);
 
-      initialise();
+    initialise();
 
+
+    //firebase.child('dictionary').remove();
   }
 
   initialise() async{
@@ -45,7 +47,7 @@ class Data {
 
         Map games = await scanGames();
 
-        List <int> mapKeys = games.keys.toSet();
+        Set<int> mapKeys = games.keys.toSet();
 
         for(int gameKey in mapKeys){
           Map game = games[gameKey];
@@ -96,6 +98,18 @@ class Data {
 
   }
 
+  setWords()async{
+
+    List<String> wordList = words.split('\n');
+
+    Map wordListMap = new Map();
+
+    wordListMap['version'] = 0;
+
+    wordListMap['words'] = wordList;
+
+
+  }
 
 
 }

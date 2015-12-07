@@ -2,9 +2,11 @@ library maintenance;
 
 import 'dart:html';
 import 'package:firebase/firebase.dart';
+import 'dart:async';
 import "dart:isolate";
 
 part 'data.dart';
+part 'words.dart';
 
 
 void main() {

@@ -16,7 +16,11 @@ void main() {
 
 
 log(String string){
-  querySelector('#output').text = string;
+
+  var textElement = new ParagraphElement();
+  textElement.text = string;
+
+  querySelector('#output').children.add(textElement);
 
 }
 
